@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:37:06 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/01/24 15:41:53 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/02/04 13:26:03 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ static void ft_handle_specifiers(char specifier, int * counter, va_list args)
 	if (specifier == 's')
 	ft_putstr_fd(va_arg(args,char *), 1);
 	if (specifier == 'c')
-	ft_putchar_fd(va_arg(args,char *), 1);
-	if (specifier == 'd')
+	ft_putchar_fd(va_arg(args, int), 1);
+	if (specifier == 'd'  && specifier == 'i')
 	ft_putnbr_fd(va_arg(args,int),1);
-	if (specifier == 'f')
+	if (specifier == 'p')
 	ft_putnbr_fd(va_arg(args,int),1);
 
 	
@@ -95,9 +95,9 @@ int ft_printf(const char * format, ...)
 	int main ()
 	{	
 		printf("ORIGINAL PRINTF \n");
-		printf("My name is %s , I have %d years old and %f", "Alice" ,-14,  - 3.5);
+		printf("My name is %s , I have %d years old and %f", "Alice" ,-1,  - 3.5);
 		printf("\nMY PRINTF \n");
-		ft_printf("My name is %s , first letter is %c, I have %d years old and %f",  "Alice", 'A', -23,1.5);
+		ft_printf("My name is %s , first letter is %c, I have %d years old and %f",  "Alice", 'A', -1,1.5);
 		return 0;
 	}
 
