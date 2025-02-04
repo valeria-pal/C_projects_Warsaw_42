@@ -57,13 +57,9 @@ static void ft_handle_specifiers(char specifier, int * counter, va_list args)
 	if (specifier == 's')
 	ft_putstr_fd(va_arg(args,char *), 1);
 	if (specifier == 'c')
-	ft_putchar_fd(va_arg(args, int), 1);
-	if (specifier == 'd'  && specifier == 'i')
-	ft_putnbr_fd(va_arg(args,int),1);
-	if (specifier == 'p')
-	ft_putnbr_fd(va_arg(args,int),1);
-
-	
+	ft_putchar_fd(va_arg(args,int ), 1);
+	if (specifier == 'd'  || specifier == 'i')
+	ft_putnbr_fd(va_arg(args,int),1);	
 }
 
 int ft_printf(const char * format, ...)
@@ -73,31 +69,31 @@ int ft_printf(const char * format, ...)
 	
 	counter  =   0;
 
-	va_start (args, format);
-	
-		while(*format != '%' && *format ){
-		write(1,format,1);
-		format++;
-		counter++;
+	va_start (args,format);
+	while (*format)
+	{
 		if (*format == '%')
 		{
 			format++;
-		ft_handle_specifiers(*format, &counter, args);
-		format++;
-	
+			ft_handle_specifiers(*format, &counter, args);
 		}
-		
+		else
+		{
+			write(1, format, 1);
+			counter++;
+		}
+		format++;
 	}
 
+	va_end(args);
 	return counter;
 }
 
 	int main ()
 	{	
 		printf("ORIGINAL PRINTF \n");
-		printf("My name is %s , I have %d years old and %f", "Alice" ,-1,  - 3.5);
+		printf("My name is %s , first letter is %c, I have %d years old and %i sisters",  "Alice", 'A', -1, 3);
 		printf("\nMY PRINTF \n");
-		ft_printf("My name is %s , first letter is %c, I have %d years old and %f",  "Alice", 'A', -1,1.5);
+		ft_printf("My name is %s , first letter is %c, I have %d years old and %i sisters",  "Alice", 'A', -1,3);
 		return 0;
 	}
-
