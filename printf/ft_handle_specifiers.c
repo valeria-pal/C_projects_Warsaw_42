@@ -10,15 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static void	ft_handle_pointer(void *ptr, int *counter)
 {
-	ft_putstr("0x", counter);
 	if (ptr == NULL)
-		ft_putchar('0', counter);
+		ft_putstr("(nil)", counter);
 	else
+	{
+		ft_putstr("0x", counter);
 		ft_convert_to_hexadecimal((uintptr_t)ptr, 'x', counter);
+	}
 }
 
 void	ft_handle_specifiers(char specifier, int *counter, va_list args)

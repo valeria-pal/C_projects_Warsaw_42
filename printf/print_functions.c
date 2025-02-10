@@ -10,10 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	ft_putstr(char *s, int *counter)
 {
+	if (!s)
+	{
+		ft_putstr("(null)", counter);
+		return;
+	}
 	while (*s)
 	{
 		write(1, s, 1);
