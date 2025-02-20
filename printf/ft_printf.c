@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:37:06 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/02/07 20:18:26 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:24:43 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 int	ft_printf(const char *format, ...)
 {
-	va_list args;
-	int counter;
+	va_list	args;
+	int		counter;
 
 	counter = 0;
-
 	va_start(args, format);
 	while (*format)
 	{
@@ -33,7 +32,6 @@ int	ft_printf(const char *format, ...)
 			ft_putchar(*format, &counter);
 		format++;
 	}
-
 	va_end(args);
 	return (counter);
 }

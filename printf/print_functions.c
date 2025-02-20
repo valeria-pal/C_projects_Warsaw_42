@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:12:18 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/02/07 20:18:43 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:21:39 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putstr(char *s, int *counter)
 	if (!s)
 	{
 		ft_putstr("(null)", counter);
-		return;
+		return ;
 	}
 	while (*s)
 	{
