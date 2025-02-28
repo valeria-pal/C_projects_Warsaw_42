@@ -1,17 +1,17 @@
-NAME = libft.a
-
+NAME = get_next_line
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = get_next_line_utils.c \
-       get_next_line.c \
+SRCS = get_next_line.c \
+       get_next_line_utils.c\
+	   test.c
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -21,3 +21,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+
+re: fclean all
+

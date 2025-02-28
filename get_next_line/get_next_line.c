@@ -10,15 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <io.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#define BUFFER_SIZE 1024
+#include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
-	static char *saved_text;
+	char *saved_text;
 	char buffer[BUFFER_SIZE + 1];
 	ssize_t bytes_read;
 
