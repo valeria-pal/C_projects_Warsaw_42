@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 15:18:09 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/02/28 20:31:04 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/03/04 14:45:49 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char	*extract_line(char **saved_text)
 	{
 		line[i] = (*saved_text)[i];
 		i++;
-	}
+}
 	if ((*saved_text)[i] == '\n')
 		line[i++] = '\n';
 	line[i] = '\0';
@@ -110,6 +110,3 @@ char	*extract_line(char **saved_text)
 	*saved_text = new_saved;
 	return (line);
 }
-
-
-

@@ -6,16 +6,15 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 15:18:14 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/02/28 20:31:11 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/03/04 14:47:47 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
-	static char	*saved_text;
+	static char	*saved_text;	
 	char		*buffer;
 	ssize_t		bytes_read;
 
@@ -39,5 +38,3 @@ char	*get_next_line(int fd)
 	saved_text = NULL;
 	return (NULL);
 }
-
-
