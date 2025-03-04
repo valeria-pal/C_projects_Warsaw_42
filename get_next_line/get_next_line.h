@@ -21,10 +21,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+
 char	*get_next_line(int fd);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
-char	*extract_line(char **saved_text);
+char	*extract_line(char *storage);
 size_t	ft_strlen(const char *str);
+char	*clean_storage(char *storage);
 
 #endif

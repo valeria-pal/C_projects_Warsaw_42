@@ -36,31 +36,38 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s);
 	return (NULL);
 }
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	const unsigned char	*arr_src;
+	unsigned char		*arr_dest;
+	size_t				i;
+
+	i = 0;
+	arr_src = (const unsigned char *)src;
+	arr_dest = (unsigned char *)dest;
+	while (i < n)
+	{
+		arr_dest[i] = arr_src[i];
+		i++;
+	}
+	return (dest);
+}
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t	s1_size;
-	size_t	s2_size;
-	char	*arr;
-	size_t	i;
-	size_t	j;
+	char	*new_str;
+	size_t	len1 = ft_strlen(s1);
+	size_t	len2 = ft_strlen(s2);
 
-	i = 0;
-	j = 0;
-	s1_size = ft_strlen(s1);
-	s2_size = ft_strlen(s2);
-	arr = (char *)malloc((s1_size + s2_size + 1) * sizeof(char));
-	if (!arr)
+	new_str = malloc(len1 + len2 + 1);
+	if (!new_str)
 		return (NULL);
-	while (s1 && s1[j])
-		arr[i++] = s1[j++];
-	j = 0;
-	while (s2[j])
-		arr[i++] = s2[j++];
-	arr[i] = '\0';
+	ft_memcpy(new_str, s1, len1);
+	ft_memcpy(new_str + len1, s2, len2 + 1);
 	free(s1);
-	return (arr);
+	return (new_str);
 }
+
 
 char	*ft_strdup(const char *s)
 {
@@ -81,32 +88,56 @@ char	*ft_strdup(const char *s)
 	dup[i] = '\0';
 	return (dup);
 }
-
-char	*extract_line(char **saved_text)
+char	*clean_storage(char *storage)
 {
-	size_t	i;
-	char	*line;
-	char	*new_saved;
+	int		i;
+	int		j;
+	char	*new_storage;
 
 	i = 0;
-	while ((*saved_text)[i] && (*saved_text)[i] != '\n')
+	while (storage[i] != '\0' && storage[i] != '\n')
 		i++;
-	if ((*saved_text)[i] == '\n')
-		i++;
-	line = (char *)malloc((i + 1) * sizeof(char));
-	if (!line)
-		return (NULL);
-	i = 0;
-	while ((*saved_text)[i] && (*saved_text)[i] != '\n')
+	if (storage[i] == '\0') // Если нет `\n`, очищаем storage
 	{
-		line[i] = (*saved_text)[i];
+		free(storage);
+		return (NULL);
+	}
+	new_storage = malloc(ft_strlen(storage) - i);
+	if (new_storage == NULL)
+		return (NULL);
+	j = 0;
+	i++;
+	while (storage[i] != '\0')
+	{
+		new_storage[j] = storage[i];
 		i++;
+		j++;
+	}
+	new_storage[j] = '\0';
+	free(storage);
+	return (new_storage);
 }
-	if ((*saved_text)[i] == '\n')
-		line[i++] = '\n';
-	line[i] = '\0';
-	new_saved = ft_strdup(*saved_text + i);
-	free(*saved_text);
-	*saved_text = new_saved;
-	return (line);
+
+
+char	*extract_line(char *storage)
+{
+    int		i;
+    char		*line;
+
+    if (storage == NULL)
+        return (NULL);
+    i = 0;
+    while (storage[i] != '\0' && storage[i] != '\n')
+        i++;
+    line = malloc(i + 2);
+    if (line == NULL)
+        return (NULL);
+    ft_memcpy(line, storage, i);
+    if (storage[i] == '\n')
+    {
+        line[i] = '\n';
+        i++;
+    }
+    line[i] = '\0';
+    return (line);
 }

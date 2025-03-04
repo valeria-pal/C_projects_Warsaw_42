@@ -9,32 +9,25 @@
 /*   Updated: 2025/03/04 14:47:47 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
-	static char	*saved_text;	
-	char		*buffer;
+	static char	*storage;
+	char		*line;
 	ssize_t		bytes_read;
+	char		buffer[BUFFER_SIZE + 1];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
-		return (NULL);
-	while (!ft_strchr(saved_text, '\n'))
+	while (!ft_strchr(storage, '\n') && (bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read <= 0)
-			break ;
 		buffer[bytes_read] = '\0';
-		saved_text = ft_strjoin(saved_text, buffer);
+		storage = ft_strjoin(storage, buffer);
 	}
-	free(buffer);
-	if (saved_text && *saved_text)
-		return (extract_line(&saved_text));
-	free(saved_text);
-	saved_text = NULL;
-	return (NULL);
+	if (!storage || *storage == '\0')
+		return (NULL);
+	line = extract_line(storage);
+	storage = clean_storage(storage);
+	return (line);
 }
