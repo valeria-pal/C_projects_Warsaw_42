@@ -101,7 +101,7 @@ char	*extract_line(char **saved_text)
 	{
 		line[i] = (*saved_text)[i];
 		i++;
-}
+	}
 	if ((*saved_text)[i] == '\n')
 		line[i++] = '\n';
 	line[i] = '\0';
