@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:08:11 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/03/19 20:46:39 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:08:12 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	is_int(char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			if (ft_atoi(argv[i]) <= INT_MIN || ft_atoi(argv[i]) >= INT_MAX) //avoid int overflow atoi does not handle
+			if (ft_atoi(argv[i]) <= INT_MIN || ft_atoi(argv[i]) >= INT_MAX)
 				return (0);
 			while (argv[i][j])
 			{
@@ -50,7 +50,6 @@ static int	have_duplicate(char **argv, int argc)
 	int	j;
 
 	i = 1;
-
 	while (argv[i])
 	{
 		j = i + 1;
@@ -67,7 +66,7 @@ static int	have_duplicate(char **argv, int argc)
 
 int	is_input_correct(int argc, char **argv)
 {
-	if (have_duplicate(argv,argc) || !is_int(argv))
+	if (have_duplicate(argv, argc) || !is_int(argv))
 	{
 		ft_printf(2, "Error");
 		return (0);

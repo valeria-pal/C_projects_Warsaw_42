@@ -6,7 +6,11 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 11:22:12 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/03/18 11:22:13 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:08:30 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// is_stack has one element
+//push_a
+//push_b
+// push_a + push_b

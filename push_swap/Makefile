@@ -1,11 +1,12 @@
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I.
+CFLAGS = -Wall -Wextra -Werror -g -I.
 
 SRCS = ft_printf.c \
 	main.c \
-	input_checkers.c 
+	input_checkers.c \
+	stack_implemetation.c
 OBJS = $(SRCS:.c=.o)  
 
 LIBFT_DIR = libft
