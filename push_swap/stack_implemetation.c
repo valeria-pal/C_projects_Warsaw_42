@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:30:32 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/03/20 19:07:06 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:41:47 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,20 @@ static Node	*create_new_node(int data)
 int is_stack_empty(Node * top)
 {
 	return (top == NULL);
+}
+int is_stack_has_one_element(Node * top)
+{
+	int i ;
+	i = 0;
+
+	while(top)
+	{
+		top = top -> next;
+		i++;
+	}
+	if (i == 1)
+	return 1;
+	return 0;
 }
 
 static void	add_node_to_stack_end(Node **top, int data)
@@ -56,18 +70,6 @@ void	print_stack(Node *top) // dont forget to delete
 		printf("%d", top->data);
 		top = top->next;
 	}
-}
-void	free_stack(Node **top)
-{
-	Node	*temp;
-
-	while (*top)
-	{
-		temp = *top;
-		*top = (*top)->next;
-		free(temp);
-	}
-	  *top = NULL;
 }
 
 Node	*insert_data_to_stack(int argc, char **argv)

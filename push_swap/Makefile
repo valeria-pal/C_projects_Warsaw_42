@@ -6,7 +6,8 @@ CFLAGS = -Wall -Wextra -Werror -g -I.
 SRCS = ft_printf.c \
 	main.c \
 	input_checkers.c \
-	stack_implemetation.c
+	stack_implemetation.c\
+	free_function.c\
 OBJS = $(SRCS:.c=.o)  
 
 LIBFT_DIR = libft
