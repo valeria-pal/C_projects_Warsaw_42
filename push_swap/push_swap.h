@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:58:50 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/03/21 16:41:58 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/03/24 19:38:44 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,8 @@ void	free_stack(Node **top);
 void	print_stack(Node *top); 
 int is_stack_empty(Node * top);
 int is_stack_has_one_element(Node * top);
+void	swap_a(Node **top_a);
+void	swap_b(Node **top_b);
+void	swap_a_b(Node **top_a, Node **top_b);
 
 #endif

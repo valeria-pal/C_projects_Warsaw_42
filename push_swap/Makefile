@@ -8,6 +8,7 @@ SRCS = ft_printf.c \
 	input_checkers.c \
 	stack_implemetation.c\
 	free_function.c\
+	swap_functions.c
 OBJS = $(SRCS:.c=.o)  
 
 LIBFT_DIR = libft

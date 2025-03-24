@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:30:32 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/03/21 16:41:47 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:00:36 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,7 @@ int is_stack_empty(Node * top)
 }
 int is_stack_has_one_element(Node * top)
 {
-	int i ;
-	i = 0;
-
-	while(top)
-	{
-		top = top -> next;
-		i++;
-	}
-	if (i == 1)
-	return 1;
-	return 0;
+	return (top != NULL && top->next == NULL);
 }
 
 static void	add_node_to_stack_end(Node **top, int data)
