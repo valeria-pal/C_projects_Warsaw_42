@@ -6,38 +6,31 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 11:23:20 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/03/21 16:38:16 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/03/24 21:10:51 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int is_stack_has_one_element(Node * top)
+static void push_element_to_stack(Node **top_a, Node ** top_b)
 {
-	int i ;
-	i = 0;
-
-	while(top)
-	{
-		top = top -> next;
-		i++;
-	}
-	if (i == 1)
-	return 1;
-	return 0;
-}
-//push_a
-
-void swap_two_elements_in_stack(char ** top)
-{
-	if (is_stack_empty(*top) || is_stack_has_one_element(*top))
+	if (is_stack_empty(*top_b)  )
 	return;
 	
 	
-	
-	 
-	 
-	
 }
-//push_b
-// push_a + push_b
+
+void push_a(Node **top_a, Node ** top_b)
+{
+	if (is_stack_empty(*top_b)  )
+	return;
+	push_element_to_stack(top_a,top_a);
+	ft_printf(1,"pa");
+}
+void push_b(Node **top_a, Node ** top_b)
+{
+	if (is_stack_empty(*top_a)  )
+	return;
+	push_element_to_stack(top_a,top_a);
+	ft_printf(1,"pb");
+}
