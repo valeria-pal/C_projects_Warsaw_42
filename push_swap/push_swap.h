@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:58:50 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/03/24 21:11:42 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:44:24 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	swap_a(Node **top_a);
 void	swap_b(Node **top_b);
 void	swap_a_b(Node **top_a, Node **top_b);
 void push_a(Node **top_a, Node ** top_b);
-void push_b(Node **top_a, Node ** top_b);
+void push_b(Node **top_b, Node ** top_a);
 
 
 #endif
