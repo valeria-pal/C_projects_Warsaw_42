@@ -6,24 +6,22 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 11:23:20 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/03/25 18:59:29 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:31:34 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static void	push_element_to_stack(Node **dest, Node **src)
-{    
-	if (is_stack_empty(*src))
-	return;
-	
+{
 	Node	*temp;
-	
-	 temp = *src;
-	 temp -> next = *dest;
-	 *dest = *src;
-	 *src = (*src) -> next;//incorrect verdion
-	 
+
+	if (is_stack_empty(*src))
+		return ;
+	temp = *src;
+	*src = (*src)->next;
+	temp->next = *dest;
+	*dest = temp;
 }
 
 void	push_a(Node **top_a, Node **top_b)

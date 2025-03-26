@@ -1,48 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_functions.c                                 :+:      :+:    :+:   */
+/*   reverse_rotate_function.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/18 11:23:28 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/03/26 18:26:38 by vpaliash         ###   ########.fr       */
+/*   Created: 2025/03/26 14:47:05 by vpaliash          #+#    #+#             */
+/*   Updated: 2025/03/26 19:04:22 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	shift_up_all_elements_by_one(Node **top)
+static void	shift_down_all_elements_by_one(Node **top)
 {
-	Node	*first;
 	Node	*last;
-
+	Node *second_last;
+	
 	if (is_stack_empty(*top) || is_stack_has_one_element(*top))
 		return ;
-	last = *top;
-	first = (*top)->next;
-	while (last->next)
-		last = last->next;
-	last->next = *top;
-	(*top)->next = NULL;
-	*top = first;
+	
+
 }
 
-void	rotate_a(Node **top_a)
+void	reverse_rotate_a(Node **top_a)
 {
-	shift_up_all_elements_by_one(top_a);
-	ft_printf(1, "ra");
+	shift_down_all_elements_by_one(top_a);
+	ft_printf(1, "rra");
 }
 
-void	rotate_b(Node **top_b)
+void	reverse_rotate_b(Node **top_b)
 {
-	shift_up_all_elements_by_one(top_b);
-	ft_printf(1, "rb");
+	shift_down_all_elements_by_one(top_b);
+	ft_printf(1, "rrb");
 }
 
-void	rotate_a_b(Node **top_a, Node **top_b)
+void	reverse_rotate_a_b(Node **top_a, Node **top_b)
 {
-	shift_up_all_elements_by_one(top_a);
-	shift_up_all_elements_by_one(top_b);
-	ft_printf(1, "rr");
+	shift_down_all_elements_by_one(top_a);
+	shift_down_all_elements_by_one(top_b);
+	ft_printf(1, "rrr");
 }

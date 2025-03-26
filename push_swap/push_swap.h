@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:58:50 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/03/25 13:44:24 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:49:31 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ void	swap_b(Node **top_b);
 void	swap_a_b(Node **top_a, Node **top_b);
 void push_a(Node **top_a, Node ** top_b);
 void push_b(Node **top_b, Node ** top_a);
-
+void rotate_a(Node ** top_a);
+void rotate_b(Node ** top_b);
+void rotate_a_b(Node ** top_a, Node ** top_b);
+void	reverse_rotate_a(Node **top_a);
+void	reverse_rotate_b(Node **top_b);
+void	reverse_rotate_a_b(Node **top_a, Node **top_b);
 
 #endif

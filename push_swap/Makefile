@@ -9,7 +9,10 @@ SRCS = ft_printf.c \
 	stack_implemetation.c\
 	free_function.c\
 	swap_functions.c\
-	push_functions.c
+	push_functions.c\
+	rotate_functions.c\
+	reverse_rotate_functions.cc
+	
 OBJS = $(SRCS:.c=.o)  
 
 LIBFT_DIR = libft
