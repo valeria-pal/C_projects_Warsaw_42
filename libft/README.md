@@ -65,12 +65,7 @@ make
 
 ## 📁 Project Structure
 
-
-libft/
-├── ft_*.c           # Source files for each libft function
-├── libft.h          # Header file with all function prototypes
-├── Makefile         # Build system to compile the library
-└── libft.a          # Static library generated after compilation
+libft/ ├── ft_*.c # Source files for each libft function ├── libft.h # Header file with all function prototypes ├── Makefile # Build system to compile the library └── libft.a # Static library generated after compilation
 
 
 ## ✅ Notes
