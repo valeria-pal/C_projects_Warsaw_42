@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:30:32 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/03/24 18:00:36 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:18:59 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static Node	*create_new_node(int data)
 	return (new_node);
 }
 
-int is_stack_empty(Node * top)
+int	is_stack_empty(Node *top)
 {
 	return (top == NULL);
 }
-int is_stack_has_one_element(Node * top)
+int	is_stack_has_one_element(Node *top)
 {
 	return (top != NULL && top->next == NULL);
 }
@@ -60,6 +60,7 @@ void	print_stack(Node *top) // dont forget to delete
 		printf("%d", top->data);
 		top = top->next;
 	}
+	write(1, "\n", 1);
 }
 
 Node	*insert_data_to_stack(int argc, char **argv)
