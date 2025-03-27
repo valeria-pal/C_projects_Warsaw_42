@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:47:05 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/03/26 19:04:22 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/03/27 14:54:14 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@
 static void	shift_down_all_elements_by_one(Node **top)
 {
 	Node	*last;
-	Node *second_last;
-	
+	Node	*second_last;
+
 	if (is_stack_empty(*top) || is_stack_has_one_element(*top))
 		return ;
-	
-
+	last = *top;
+	second_last = *top;
+	while (second_last->next->next)
+		second_last = second_last->next;
+	*top = second_last->next;
+	second_last->next = NULL;
+	(*top)->next = last;
 }
 
 void	reverse_rotate_a(Node **top_a)
