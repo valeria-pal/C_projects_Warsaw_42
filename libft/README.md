@@ -58,14 +58,14 @@ git clone https://github.com/yourusername/libft.git
 cd libft
 make
 
-📁 Project Structure
+## 📁 Project Structure
 libft.h – Header file with all function prototypes.
 
 *.c – Function source files.
 
 Makefile – To build the library (libft.a).
 
-✅ Notes
+## ✅ Notes
 Norm-compliant.
 
 No memory leaks.
