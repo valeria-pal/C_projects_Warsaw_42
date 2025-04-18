@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:16:24 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/03/27 15:41:41 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/04/18 15:24:46 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,61 +18,25 @@ int	main(int argc, char **argv)
 {
 	Node *stack_a;
 	Node *stack_b;
+	long min = 0;
 
 	if (!is_input_correct(argc, argv))
 		return (0);
+
 	stack_a = insert_data_to_stack(argc, argv);
 	stack_b = NULL;
 
+	if (!is_stack_have_only_positive_numbers(stack_a))
+	{
+		min = find_min_in_stack(stack_a);
+		make_stack_with_only_positive_numbers(&stack_a);
+	}
 
-	printf("\nStack a \n");
+	sort_stack(&stack_a, &stack_b);
+
+	if (min != 0)
+		restore_original_stack_values(&stack_a, min);
+
 	print_stack(stack_a);
-	printf("\nStack b \n");
-	print_stack(stack_b);
-	
-	swap_a(&stack_a);
-	printf("\nStack a \n");
-	print_stack(stack_a);
-	printf("\nStack b \n");
-	print_stack(stack_b);
-
-
-	push_b(&stack_b, &stack_a);
-	push_b(&stack_b, &stack_a);
-	push_b(&stack_b, &stack_a);
-	printf("\nStack a \n");
-	print_stack(stack_a);
-	printf("\nStack b \n");
-	print_stack(stack_b);
-
-	rotate_a_b(&stack_a, &stack_b);
-	printf("\nStack a \n");
-	print_stack(stack_a);
-	printf("\nStack b \n");
-	print_stack(stack_b);
-
-	
-	reverse_rotate_a_b(&stack_a, &stack_b);
-	printf("\nStack a \n");
-	print_stack(stack_a);
-	printf("\nStack b \n");
-	print_stack(stack_b);
-
-	swap_a(&stack_a);
-	printf("\nStack a \n");
-	print_stack(stack_a);
-	printf("\nStack b \n");
-	print_stack(stack_b);
-
-	push_a(&stack_a, &stack_b);
-	push_a(&stack_a, &stack_b);
-	push_a(&stack_a, &stack_b);
-	printf("\nStack a \n");
-	print_stack(stack_a);
-	printf("\nStack b \n");
-	print_stack(stack_b);
-
-	free_stack(&stack_a);
-	free_stack(&stack_b);
 	return (0);
 }
