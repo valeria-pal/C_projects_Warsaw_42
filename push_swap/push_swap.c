@@ -6,43 +6,16 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 11:22:12 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/18 15:15:55 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/04/25 18:28:48 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static long	find_max_in_stack(Node *top)
-{
-	long	max;
-
-	max = top->data;
-	while (top)
-	{
-		if (top->data > max)
-			max = top->data;
-		top = top->next;
-	}
-	return (max);
-}
-
-static int	get_max_bits(Node *top)
-{
-	int	max;
-	int	bits;
-
-	max = find_max_in_stack(top);
-	bits = 0;
-	while ((max >> bits) != 0)
-		bits++;
-	return (bits);
-}
+#include <stdlib.h>
 
 static int	stack_size(Node *top)
 {
-	int	count;
-
-	count = 0;
+	int	count = 0;
 	while (top)
 	{
 		count++;
@@ -50,25 +23,84 @@ static int	stack_size(Node *top)
 	}
 	return (count);
 }
-void	sort_stack(Node **top_a, Node **top_b)
-{
-	int	i;
-	int	j;
 
-	i = 0;
-	while (i < get_max_bits(*top_a))
+
+int * stack_to_arr(Node *top )
+{
+	int size = stack_size(top);
+	int i = 0;
+	int *int_arr = malloc(size*sizeof(int));
+	if (!int_arr)
+	return -1;
+	Node *temp = top;
+	if (!int_arr)
+	return NULL;
+
+	while(temp)
 	{
-		j = 0;
-		while (j < stack_size(*top_a))
+		int_arr[i++] = temp->data;
+		temp = temp->next;
+	}
+	return int_arr;
+	
+}
+void swap(int *a, int *b)
+{
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+ 
+int find_median_from_stack(Node *top)
+{
+	int *int_arr = stack_to_arr(top);
+	if (!int_arr)
+		return -1;
+	int size = stack_size(top);
+	int i = 0;
+	bubble_sort(int_arr, size);
+	int median = int_arr[size/2];
+	
+	return median;
+	
+}
+
+void bubble_sort (int * tab, int size)
+
+{
+	int temp;
+	int i = 0;
+	int swapped = 1;
+	while(swapped)
+	{
+		swapped = 0;
+		i=0;
+	while(i <size)
+	{
+		if(tab[i] > tab[i+1])
 		{
-			if (((*top_a)->data >> i) & 1)
-				rotate_a(top_a);
-			else
-				push_b(top_a, top_b);
-			j++;
+		swap (tab[i], tab[i+1]);
+		swapped = 1;
 		}
-		while (*top_b)
-			push_a(top_a, top_b);
-		i++;
+	
+	i++;
 	}
 }
+}
+
+
+void split_by_median(Node **a, Node **b, int median)
+{
+	int i = 0;
+int size = stack_size(*a);
+while (i < size)
+{
+	if ((*a)->data < median)
+		push_b(a, b);
+	else
+		rotate_a(a);
+	i++;
+}
+}
+

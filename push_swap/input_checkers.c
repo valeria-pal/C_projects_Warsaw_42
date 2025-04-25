@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:08:11 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/03/20 15:08:12 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/04/24 15:15:15 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,40 @@
 
 static int	have_no_parameters_to_process(int argc)
 {
-	if (argc < 3)
-		return (1);
-	return (0);
+	return (argc < 2);
+}
+
+static int	is_valid_number(const char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (!str[i])
+		return (0);
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 static int	is_int(char **argv)
 {
-	int	j;
-	int	i;
+	int		i;
+	long	value;
 
 	i = 1;
 	while (argv[i])
 	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if (ft_atoi(argv[i]) <= INT_MIN || ft_atoi(argv[i]) >= INT_MAX)
-				return (0);
-			while (argv[i][j])
-			{
-				if (argv[i][j] <= '0' || argv[i][j] >= '9')
-					return (0);
-				j++;
-			}
-		}
+		if (!is_valid_number(argv[i]))
+			return (0);
+		value = ft_atoi(argv[i]);
+		if (value < INT_MIN || value > INT_MAX)
+			return (0);
 		i++;
 	}
 	return (1);
@@ -46,11 +55,10 @@ static int	is_int(char **argv)
 
 static int	have_duplicate(char **argv, int argc)
 {
-	int	i;
-	int	j;
-
+	int i;
+	int j;
 	i = 1;
-	while (argv[i])
+	while (i < argc)
 	{
 		j = i + 1;
 		while (j < argc)
@@ -66,13 +74,12 @@ static int	have_duplicate(char **argv, int argc)
 
 int	is_input_correct(int argc, char **argv)
 {
-	if (have_duplicate(argv, argc) || !is_int(argv))
+	if (have_no_parameters_to_process(argc))
+		return (0);
+	if (!is_int(argv) || have_duplicate(argv, argc))
 	{
-		ft_printf(2, "Error");
+		ft_printf(2, "Error\n");
 		return (0);
 	}
-	else if (have_no_parameters_to_process(argc))
-		return (0);
-
 	return (1);
 }

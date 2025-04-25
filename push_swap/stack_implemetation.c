@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:30:32 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/18 15:08:47 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/04/24 15:15:15 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	print_stack(Node *top) // dont forget to delete
 {
 	while (top)
 	{
-		printf("%ld", top->data);
+		printf(" %ld ", top->data);
 		top = top->next;
 	}
 	write(1, "\n", 1);

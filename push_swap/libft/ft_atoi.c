@@ -6,13 +6,13 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:14:07 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/18 13:33:30 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/04/22 19:27:30 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 long	ft_atoi(const char *str)
 {
-	int	result;
+	long	result;
 	int	sign;
 
 	sign = 1;
