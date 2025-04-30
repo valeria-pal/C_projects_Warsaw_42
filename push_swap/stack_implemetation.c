@@ -53,14 +53,14 @@ static void	add_node_to_stack_end(Node **top, int data)
 	}
 	temp->next = new_node;
 }
-void	print_stack(Node *top) // dont forget to delete
+void print_stack(Node *top)
 {
 	while (top)
 	{
-		printf(" %ld ", top->data);
+		printf("%d ", top->data);
 		top = top->next;
 	}
-	write(1, "\n", 1);
+	printf("\n");
 }
 
 Node	*insert_data_to_stack(int argc, char **argv)

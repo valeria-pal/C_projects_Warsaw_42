@@ -3,16 +3,20 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -I.
 
-SRCS = ft_printf.c \
+SRCS = \
 	main.c \
-	input_checkers.c \
+	push_swap.c \
+	sort_small.c \
 	stack_implemetation.c \
-	free_function.c \
 	swap_functions.c \
 	push_functions.c \
 	rotate_functions.c \
 	reverse_rotate_functions.c \
-	push_swap.c
+	free_function.c \
+	input_checkers.c \
+	ft_printf.c\
+	sort_preparation.c
+	
 
 OBJS = $(SRCS:.c=.o)
 

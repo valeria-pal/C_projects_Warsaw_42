@@ -22,7 +22,7 @@
 
 typedef struct Node
 {
-	long int	data;
+	 int	data;
 	struct Node	*next;
 }				Node;
 
@@ -32,7 +32,6 @@ Node	*insert_data_to_stack(int argc, char **argv);
 
 
 void	free_stack(Node **top);
-void	print_stack(Node *top); // можно удалить в финальной версии
 
 
 int		is_stack_empty(Node *top);
@@ -58,13 +57,24 @@ void	reverse_rotate_b(Node **top_b);
 void	reverse_rotate_a_b(Node **top_a, Node **top_b);
 
 
+void sort_two(Node ** top_a);
+void sort_three(Node ** top_a);
+void sort_three_b(Node **top_b);
+void sort_five(Node **top_a, Node **top_b);
 
-// Индексация и сортировка
-void	index_stack(Node *top);
-void	sort_stack(Node **top_a, Node **top_b);
 
-// Печать
 void	ft_printf(int fd, char *str);
 void	print_stack(Node *top);
+
+int	stack_size(Node *top);
+
+
+void push_swap(Node **a);
+void radix_sort(Node **a, Node **b);
+
+void index_stack(Node *top);
+
+int get_max_bits(Node *top);
+
 
 #endif

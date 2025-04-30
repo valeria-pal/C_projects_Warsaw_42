@@ -13,17 +13,16 @@
 #include "push_swap.h"
 
 // valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap
-int	main(int argc, char **argv)
+
+int main(int argc, char **argv)
 {
 	if (is_input_correct(argc, argv))
 	{
 		Node *a = insert_data_to_stack(argc, argv);
-		Node *b = NULL;
-
-		index_stack(a);
-		sort_stack(&a, &b);
-		print_stack(a);
+		
+		push_swap(&a);
 		free_stack(&a);
 	}
-	return (0);
+	return 0;
 }
+

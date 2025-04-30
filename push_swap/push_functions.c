@@ -27,10 +27,10 @@ static void	push_element_to_stack(Node **dest, Node **src)
 void	push_a(Node **top_a, Node **top_b)
 {
 	push_element_to_stack(top_a, top_b);
-	ft_printf(1, "pa\n");
+	ft_printf(1, "pa");
 }
 void	push_b(Node **top_b, Node **top_a)
 {
 	push_element_to_stack(top_b, top_a);
-	ft_printf(1, "pb\n");
+	ft_printf(1, "pb");
 }

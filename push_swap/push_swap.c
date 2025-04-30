@@ -11,96 +11,59 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
 
-static int	stack_size(Node *top)
+
+
+static int  is_sorted(Node *top)
 {
-	int	count = 0;
-	while (top)
+	while (top && top->next)
 	{
-		count++;
+		if (top->data > top->next->data)
+			return 0;
 		top = top->next;
 	}
-	return (count);
+	return 1;
 }
-
-
-int * stack_to_arr(Node *top )
+void radix_sort(Node **a, Node **b)
 {
-	int size = stack_size(top);
-	int i = 0;
-	int *int_arr = malloc(size*sizeof(int));
-	if (!int_arr)
-	return -1;
-	Node *temp = top;
-	if (!int_arr)
-	return NULL;
+	int size = stack_size(*a);
+	int max_bits = get_max_bits(*a);
 
-	while(temp)
+	for (int i = 0; i < max_bits; i++)
 	{
-		int_arr[i++] = temp->data;
-		temp = temp->next;
-	}
-	return int_arr;
-	
-}
-void swap(int *a, int *b)
-{
-	int tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
- 
-int find_median_from_stack(Node *top)
-{
-	int *int_arr = stack_to_arr(top);
-	if (!int_arr)
-		return -1;
-	int size = stack_size(top);
-	int i = 0;
-	bubble_sort(int_arr, size);
-	int median = int_arr[size/2];
-	
-	return median;
-	
-}
-
-void bubble_sort (int * tab, int size)
-
-{
-	int temp;
-	int i = 0;
-	int swapped = 1;
-	while(swapped)
-	{
-		swapped = 0;
-		i=0;
-	while(i <size)
-	{
-		if(tab[i] > tab[i+1])
+		int j = 0;
+		while (j < size)
 		{
-		swap (tab[i], tab[i+1]);
-		swapped = 1;
+			if (((*a)->data >> i) & 1)
+				rotate_a(a);
+			else
+				push_b(b, a);
+			j++;
 		}
-	
-	i++;
+		while (*b)
+			push_a(a, b);
 	}
 }
-}
 
 
-void split_by_median(Node **a, Node **b, int median)
+void push_swap(Node **a)
 {
-	int i = 0;
-int size = stack_size(*a);
-while (i < size)
-{
-	if ((*a)->data < median)
-		push_b(a, b);
+	Node *b = NULL;
+	int size = stack_size(*a);
+
+	if (is_sorted(*a) || size <= 1)
+		return;
+
+	if (size == 2)
+		sort_two(a);
+	else if (size == 3)
+		sort_three(a);
+	else if (size <= 5)
+		sort_five(a, &b);
 	else
-		rotate_a(a);
-	i++;
+	{
+		index_stack(*a);
+		print_stack(*a);
+		radix_sort(a, &b);
+	}
 }
-}
-
