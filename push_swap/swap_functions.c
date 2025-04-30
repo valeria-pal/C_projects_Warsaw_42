@@ -6,16 +6,16 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 11:23:24 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/24 14:41:28 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:51:44 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap_two_elements_in_stack(Node **top)
+static void	swap_two_elements_in_stack(t_node **top)
 {
-	Node	*first;
-	Node	*second;
+	t_node	*first;
+	t_node	*second;
 
 	if (is_stack_empty(*top) || is_stack_has_one_element(*top))
 		return ;
@@ -24,19 +24,21 @@ static void	swap_two_elements_in_stack(Node **top)
 	first->next = second->next;
 	second->next = first;
 	*top = second;
-} // two ways - reconnecting nodes pointers or swap nodes data
-void	swap_a(Node **top_a)
+}
+
+void	swap_a(t_node **top_a)
 {
 	swap_two_elements_in_stack(top_a);
 	ft_printf(1, "sa");
 }
-void	swap_b(Node **top_b)
+
+void	swap_b(t_node **top_b)
 {
 	swap_two_elements_in_stack(top_b);
 	ft_printf(1, "sb");
 }
 
-void	swap_a_b(Node **top_a, Node **top_b)
+void	swap_a_b(t_node **top_a, t_node **top_b)
 {
 	swap_two_elements_in_stack(top_a);
 	swap_two_elements_in_stack(top_b);

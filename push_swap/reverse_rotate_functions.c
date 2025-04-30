@@ -6,16 +6,16 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:47:05 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/24 14:43:17 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:43:37 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	shift_down_all_elements_by_one(Node **top)
+static void	shift_down_all_elements_by_one(t_node **top)
 {
-	Node	*last;
-	Node	*second_last;
+	t_node	*last;
+	t_node	*second_last;
 
 	if (is_stack_empty(*top) || is_stack_has_one_element(*top))
 		return ;
@@ -28,19 +28,19 @@ static void	shift_down_all_elements_by_one(Node **top)
 	(*top)->next = last;
 }
 
-void	reverse_rotate_a(Node **top_a)
+void	reverse_rotate_a(t_node **top_a)
 {
 	shift_down_all_elements_by_one(top_a);
 	ft_printf(1, "rra");
 }
 
-void	reverse_rotate_b(Node **top_b)
+void	reverse_rotate_b(t_node **top_b)
 {
 	shift_down_all_elements_by_one(top_b);
 	ft_printf(1, "rrb");
 }
 
-void	reverse_rotate_a_b(Node **top_a, Node **top_b)
+void	reverse_rotate_a_b(t_node **top_a, t_node **top_b)
 {
 	shift_down_all_elements_by_one(top_a);
 	shift_down_all_elements_by_one(top_b);

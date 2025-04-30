@@ -6,16 +6,11 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:08:11 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/24 15:15:15 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:41:07 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	have_no_parameters_to_process(int argc)
-{
-	return (argc < 2);
-}
 
 static int	is_valid_number(const char *str)
 {
@@ -35,18 +30,38 @@ static int	is_valid_number(const char *str)
 	return (1);
 }
 
+static int	is_in_int_range(const char *str)
+{
+	long	result;
+	int		sign;
+
+	result = 0;
+	sign = 1;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str)
+	{
+		result = result * 10 + (*str - '0');
+		if ((sign == 1 && result > INT_MAX)
+			|| (sign == -1 && - result < INT_MIN))
+			return (0);
+		str++;
+	}
+	return (1);
+}
+
 static int	is_int(char **argv)
 {
-	int		i;
-	long	value;
+	int	i;
 
 	i = 1;
 	while (argv[i])
 	{
-		if (!is_valid_number(argv[i]))
-			return (0);
-		value = ft_atoi(argv[i]);
-		if (value < INT_MIN || value > INT_MAX)
+		if (!is_valid_number(argv[i]) || !is_in_int_range(argv[i]))
 			return (0);
 		i++;
 	}
@@ -55,8 +70,9 @@ static int	is_int(char **argv)
 
 static int	have_duplicate(char **argv, int argc)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
+
 	i = 1;
 	while (i < argc)
 	{
@@ -74,8 +90,6 @@ static int	have_duplicate(char **argv, int argc)
 
 int	is_input_correct(int argc, char **argv)
 {
-	if (have_no_parameters_to_process(argc))
-		return (0);
 	if (!is_int(argv) || have_duplicate(argv, argc))
 	{
 		ft_printf(2, "Error\n");

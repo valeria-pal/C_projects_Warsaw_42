@@ -6,15 +6,15 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 16:39:38 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/03/21 16:40:49 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:35:12 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_stack(Node **top)
+void	free_stack(t_node **top)
 {
-	Node	*temp;
+	t_node	*temp;
 
 	while (*top)
 	{
@@ -22,5 +22,5 @@ void	free_stack(Node **top)
 		*top = (*top)->next;
 		free(temp);
 	}
-	  *top = NULL;
+	*top = NULL;
 }

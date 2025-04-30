@@ -15,7 +15,8 @@ SRCS = \
 	free_function.c \
 	input_checkers.c \
 	ft_printf.c\
-	sort_preparation.c
+	sort_preparation.c\
+
 	
 
 OBJS = $(SRCS:.c=.o)

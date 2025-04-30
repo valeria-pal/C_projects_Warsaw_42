@@ -6,54 +6,100 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 11:22:12 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/25 18:28:48 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:42:45 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-
-static int  is_sorted(Node *top)
+int	is_sorted(t_node *top)
 {
 	while (top && top->next)
 	{
 		if (top->data > top->next->data)
-			return 0;
+			return (0);
 		top = top->next;
 	}
-	return 1;
+	return (1);
 }
-void radix_sort(Node **a, Node **b)
-{
-	int size = stack_size(*a);
-	int max_bits = get_max_bits(*a);
 
-	for (int i = 0; i < max_bits; i++)
+static int	find_max(t_node *top)
+{
+	int	max;
+
+	max = top->data;
+	while (top)
 	{
-		int j = 0;
-		while (j < size)
+		if (top->data > max)
+			max = top->data;
+		top = top->next;
+	}
+	return (max);
+}
+
+static void	move_max_to_top_b(t_node **b, int max)
+{
+	int		pos;
+	t_node	*temp;
+	int		size;
+
+	pos = 0;
+	temp = *b;
+	while (temp && temp->data != max)
+	{
+		temp = temp->next;
+		pos++;
+	}
+	size = stack_size(*b);
+	if (pos <= size / 2)
+		while ((*b)->data != max)
+			rotate_b(b);
+	else
+		while ((*b)->data != max)
+			reverse_rotate_b(b);
+}
+
+static void	chunk_sort(t_node **a, t_node **b, int chunk_size)
+{
+	int	i;
+	int	limit;
+	int	max;
+
+	i = 0;
+	limit = chunk_size;
+	while (*a)
+	{
+		if ((*a)->data <= limit)
 		{
-			if (((*a)->data >> i) & 1)
-				rotate_a(a);
-			else
-				push_b(b, a);
-			j++;
+			push_b(b, a);
+			if ((*b)->data < limit - chunk_size / 2)
+				rotate_b(b);
+			if (++i % chunk_size == 0)
+				limit += chunk_size;
 		}
-		while (*b)
-			push_a(a, b);
+		else
+			rotate_a(a);
+	}
+	while (*b)
+	{
+		max = find_max(*b);
+		move_max_to_top_b(b, max);
+		push_a(a, b);
 	}
 }
 
-
-void push_swap(Node **a)
+void	push_swap(t_node **a, int argc)
 {
-	Node *b = NULL;
-	int size = stack_size(*a);
+	t_node	*b;
+	int		size;
+	int		chunk_size;
 
-	if (is_sorted(*a) || size <= 1)
-		return;
-
+	if (argc > 101)
+		chunk_size = 45;
+	else
+		chunk_size = 20;
+	b = NULL;
+	size = stack_size(*a);
 	if (size == 2)
 		sort_two(a);
 	else if (size == 3)
@@ -63,7 +109,6 @@ void push_swap(Node **a)
 	else
 	{
 		index_stack(*a);
-		print_stack(*a);
-		radix_sort(a, &b);
+		chunk_sort(a, &b, chunk_size);
 	}
 }

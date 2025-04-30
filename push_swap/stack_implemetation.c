@@ -6,17 +6,17 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:30:32 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/24 15:15:15 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:51:07 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static Node	*create_new_node(int data)
+static t_node	*create_new_node(int data)
 {
-	Node	*new_node;
+	t_node	*new_node;
 
-	new_node = (Node *)malloc(sizeof(Node));
+	new_node = (t_node *)malloc(sizeof(t_node));
 	if (!new_node)
 		return (NULL);
 	new_node->data = data;
@@ -24,19 +24,20 @@ static Node	*create_new_node(int data)
 	return (new_node);
 }
 
-int	is_stack_empty(Node *top)
+int	is_stack_empty(t_node *top)
 {
 	return (top == NULL);
 }
-int	is_stack_has_one_element(Node *top)
+
+int	is_stack_has_one_element(t_node *top)
 {
 	return (top != NULL && top->next == NULL);
 }
 
-static void	add_node_to_stack_end(Node **top, int data)
+static void	add_node_to_stack_end(t_node **top, int data)
 {
-	Node	*new_node;
-	Node	*temp;
+	t_node	*new_node;
+	t_node	*temp;
 
 	new_node = create_new_node(data);
 	if (!new_node)
@@ -53,23 +54,14 @@ static void	add_node_to_stack_end(Node **top, int data)
 	}
 	temp->next = new_node;
 }
-void print_stack(Node *top)
-{
-	while (top)
-	{
-		printf("%d ", top->data);
-		top = top->next;
-	}
-	printf("\n");
-}
 
-Node	*insert_data_to_stack(int argc, char **argv)
+t_node	*insert_data_to_stack(int argc, char **argv)
 {
-	int i;
-	Node *top = NULL;
+	int		i;
+	t_node	*top;
 
+	top = NULL;
 	i = 1;
-
 	while (i < argc)
 	{
 		add_node_to_stack_end(&top, ft_atoi(argv[i]));
