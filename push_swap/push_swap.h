@@ -50,7 +50,6 @@ void				reverse_rotate_a_b(t_node **top_a, t_node **top_b);
 
 void				sort_two(t_node **top_a);
 void				sort_three(t_node **top_a);
-void				sort_three_b(t_node **top_b);
 void				sort_five(t_node **top_a, t_node **top_b);
 
 void				ft_printf(int fd, char *str);
@@ -59,7 +58,7 @@ void				print_stack(t_node *top);
 int					stack_size(t_node *top);
 int					is_sorted(t_node *top);
 
-void				push_swap(t_node **a, int argc);
+void				push_swap(t_node **a);
 
 void				index_stack(t_node *top);
 

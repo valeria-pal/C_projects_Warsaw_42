@@ -45,6 +45,8 @@ static void	move_max_to_top_b(t_node **b, int max)
 
 	pos = 0;
 	temp = *b;
+	if ((*b)->data == max)
+	return ;
 	while (temp && temp->data != max)
 	{
 		temp = temp->next;
@@ -88,16 +90,14 @@ static void	chunk_sort(t_node **a, t_node **b, int chunk_size)
 	}
 }
 
-void	push_swap(t_node **a, int argc)
+void	push_swap(t_node **a)
 {
 	t_node	*b;
 	int		size;
 	int		chunk_size;
-
-	if (argc > 101)
-		chunk_size = 45;
-	else
-		chunk_size = 20;
+  
+	chunk_size = 20;
+	
 	b = NULL;
 	size = stack_size(*a);
 	if (size == 2)

@@ -59,35 +59,6 @@ void	sort_three(t_node **top_a)
 		reverse_rotate_a(top_a);
 }
 
-void	sort_three_b(t_node **top_b)
-{
-	int	first;
-	int	second;
-	int	third;
-
-	first = (*top_b)->data;
-	second = (*top_b)->next->data;
-	third = (*top_b)->next->next->data;
-	if (first < second && second > third && first > third)
-		swap_b(top_b);
-	else if (first < second && second < third)
-	{
-		swap_b(top_b);
-		rotate_b(top_b);
-	}
-	else if (first > second && second < third && first > third)
-		rotate_b(top_b);
-	else if (first > second && second > third)
-		return ;
-	else if (first < second && second > third && first < third)
-		reverse_rotate_b(top_b);
-	else if (first > second && second < third && first < third)
-	{
-		swap_b(top_b);
-		reverse_rotate_b(top_b);
-	}
-}
-
 void	sort_five(t_node **top_a, t_node **top_b)
 {
 	int	min;

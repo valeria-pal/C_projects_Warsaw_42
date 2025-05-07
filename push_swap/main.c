@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 			ft_printf(1, "already sorted");
 			return (0);
 		}
-		push_swap(&a, argc);
+		push_swap(&a);
 		free_stack(&a);
 	}
 	return (0);
