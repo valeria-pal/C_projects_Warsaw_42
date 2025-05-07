@@ -3,7 +3,7 @@
 
 COUNT=${1:-100}
 
-ARG=($(shuf -i 1-1000 -n $COUNT))
+ARG=($(seq -1000 1000 | shuf -n $COUNT))
 
 
 valgrind --leak-check=full --track-origins=yes ./checker "${ARG[@]}" < /tmp/cmds.txt
