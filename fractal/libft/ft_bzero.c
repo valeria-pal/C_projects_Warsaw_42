@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 17:16:24 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/30 16:55:18 by vpaliash         ###   ########.fr       */
+/*   Created: 2024/12/12 16:08:01 by vpaliash          #+#    #+#             */
+/*   Updated: 2024/12/16 17:22:03 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <stddef.h>
 
-int	main(int argc, char **argv)
+void	ft_bzero(void *s, size_t n)
 {
-	t_node	*a;
+	size_t	i;
+	char	*arr;
 
-	if (argc < 2)
-		return (0);
-	else if (is_input_correct(argc, argv))
+	i = 0;
+	arr = (char *)s;
+	while (i < n)
 	{
-		a = insert_data_to_stack(argc, argv);
-		if (is_sorted(a))
-		{
-			free_stack(&a);
-			ft_printf(1, "already sorted");
-			return (0);
-		}
-		push_swap(&a);
-		free_stack(&a);
+		arr[i] = 0;
+		i++;
 	}
-	return (0);
 }

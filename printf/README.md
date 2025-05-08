@@ -2,7 +2,7 @@
 
 ## Overview
 
-**ft_printf** is a custom implementation of the standard `printf` function in C. This project is commonly used in coding schools like 42 to teach students about variadic functions, formatted output, and handling different data types.
+**ft_printf** is a custom implementation of the standard `printf` function in C. 
 
 ## Features
 - Supports multiple format specifiers: `%c`, `%s`, `%d`, `%i`, `%u`, `%x`, `%X`, and `%%`.

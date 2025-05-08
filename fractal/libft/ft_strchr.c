@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 17:16:24 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/30 16:55:18 by vpaliash         ###   ########.fr       */
+/*   Created: 2024/12/03 14:12:52 by vpaliash          #+#    #+#             */
+/*   Updated: 2024/12/16 20:41:50 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strchr(const char *s, int c)
 {
-	t_node	*a;
-
-	if (argc < 2)
-		return (0);
-	else if (is_input_correct(argc, argv))
+	while (*s)
 	{
-		a = insert_data_to_stack(argc, argv);
-		if (is_sorted(a))
-		{
-			free_stack(&a);
-			ft_printf(1, "already sorted");
-			return (0);
-		}
-		push_swap(&a);
-		free_stack(&a);
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
 	}
-	return (0);
+	if (c == '\0')
+		return ((char *)s);
+	return (NULL);
 }

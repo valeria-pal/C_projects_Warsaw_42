@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 17:16:24 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/30 16:55:18 by vpaliash         ###   ########.fr       */
+/*   Created: 2024/12/03 14:15:35 by vpaliash          #+#    #+#             */
+/*   Updated: 2024/12/16 19:20:21 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strdup(const char *s)
 {
-	t_node	*a;
+	int		size;
+	char	*arr;
+	char	*start;
 
-	if (argc < 2)
-		return (0);
-	else if (is_input_correct(argc, argv))
+	size = ft_strlen(s);
+	arr = (char *)malloc((size + 1) * sizeof(char));
+	if (!arr)
+		return (NULL);
+	start = arr;
+	while (*s)
 	{
-		a = insert_data_to_stack(argc, argv);
-		if (is_sorted(a))
-		{
-			free_stack(&a);
-			ft_printf(1, "already sorted");
-			return (0);
-		}
-		push_swap(&a);
-		free_stack(&a);
+		*arr = *s;
+		arr++;
+		s++;
 	}
-	return (0);
+	*arr = '\0';
+	return (start);
 }

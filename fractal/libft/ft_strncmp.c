@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 17:16:24 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/30 16:55:18 by vpaliash         ###   ########.fr       */
+/*   Created: 2024/12/12 16:08:30 by vpaliash          #+#    #+#             */
+/*   Updated: 2024/12/16 19:21:02 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_node	*a;
+	size_t	i;
 
-	if (argc < 2)
-		return (0);
-	else if (is_input_correct(argc, argv))
+	i = 0;
+	if (n == 0)
 	{
-		a = insert_data_to_stack(argc, argv);
-		if (is_sorted(a))
-		{
-			free_stack(&a);
-			ft_printf(1, "already sorted");
-			return (0);
-		}
-		push_swap(&a);
-		free_stack(&a);
+		return (0);
 	}
-	return (0);
+	while (i < n && s1[i] && s2[i] && (s1[i] == s2[i]))
+	{
+		i++;
+	}
+	if (i == n)
+	{
+		return (0);
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

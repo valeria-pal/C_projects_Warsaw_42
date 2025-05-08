@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 17:16:24 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/30 16:55:18 by vpaliash         ###   ########.fr       */
+/*   Created: 2024/12/03 14:14:07 by vpaliash          #+#    #+#             */
+/*   Updated: 2025/04/30 16:10:12 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-int	main(int argc, char **argv)
+long	ft_atoi(const char *str)
 {
-	t_node	*a;
+	long	result;
+	int		sign;
 
-	if (argc < 2)
-		return (0);
-	else if (is_input_correct(argc, argv))
+	sign = 1;
+	result = 0;
+	while (((*str >= 9) && (*str <= 13)) || *str == ' ')
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		a = insert_data_to_stack(argc, argv);
-		if (is_sorted(a))
-		{
-			free_stack(&a);
-			ft_printf(1, "already sorted");
-			return (0);
-		}
-		push_swap(&a);
-		free_stack(&a);
+		if (*str == '-')
+			sign = -sign;
+		str++;
 	}
-	return (0);
+	while (*str && (*str >= '0' && *str <= '9'))
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (result * sign);
 }

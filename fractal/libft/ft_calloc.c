@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 17:16:24 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/30 16:55:18 by vpaliash         ###   ########.fr       */
+/*   Created: 2024/12/03 14:14:52 by vpaliash          #+#    #+#             */
+/*   Updated: 2024/12/16 21:14:08 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	t_node	*a;
+	void	*arr;
+	size_t	arr_length;
 
-	if (argc < 2)
-		return (0);
-	else if (is_input_correct(argc, argv))
-	{
-		a = insert_data_to_stack(argc, argv);
-		if (is_sorted(a))
-		{
-			free_stack(&a);
-			ft_printf(1, "already sorted");
-			return (0);
-		}
-		push_swap(&a);
-		free_stack(&a);
-	}
-	return (0);
+	if (nmemb != 0 && size != 0 && (nmemb * size) / nmemb != size)
+		return (NULL);
+	arr_length = nmemb * size;
+	if (nmemb == 0 || size == 0)
+		arr_length = 1;
+	arr = malloc(arr_length);
+	if (!arr)
+		return (NULL);
+	ft_memset(arr, 0, arr_length);
+	return (arr);
 }

@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 17:16:24 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/30 16:55:18 by vpaliash         ###   ########.fr       */
+/*   Created: 2024/12/03 14:11:22 by vpaliash          #+#    #+#             */
+/*   Updated: 2024/12/16 21:11:26 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	t_node	*a;
+	const unsigned char	*arr_src;
+	unsigned char		*arr_dest;
+	size_t				i;
 
-	if (argc < 2)
-		return (0);
-	else if (is_input_correct(argc, argv))
+	i = 0;
+	arr_src = (const unsigned char *)src;
+	arr_dest = (unsigned char *)dest;
+	while (i < n)
 	{
-		a = insert_data_to_stack(argc, argv);
-		if (is_sorted(a))
-		{
-			free_stack(&a);
-			ft_printf(1, "already sorted");
-			return (0);
-		}
-		push_swap(&a);
-		free_stack(&a);
+		arr_dest[i] = arr_src[i];
+		i++;
 	}
-	return (0);
+	return (dest);
 }

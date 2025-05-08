@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 17:16:24 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/30 16:55:18 by vpaliash         ###   ########.fr       */
+/*   Created: 2024/12/12 16:09:03 by vpaliash          #+#    #+#             */
+/*   Updated: 2024/12/16 19:20:46 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	t_node	*a;
+	size_t	i;
+	size_t	src_size;
 
-	if (argc < 2)
-		return (0);
-	else if (is_input_correct(argc, argv))
+	i = 0;
+	src_size = ft_strlen(src);
+	if (size == 0)
+		return (src_size);
+	while ((i < size - 1) && src[i])
 	{
-		a = insert_data_to_stack(argc, argv);
-		if (is_sorted(a))
-		{
-			free_stack(&a);
-			ft_printf(1, "already sorted");
-			return (0);
-		}
-		push_swap(&a);
-		free_stack(&a);
+		dst[i] = src[i];
+		i++;
 	}
-	return (0);
+	if (i < size)
+		dst[i] = '\0';
+	return (src_size);
 }
