@@ -16,6 +16,7 @@ SRCS = \
 	input_checkers.c \
 	ft_printf.c\
 	sort_preparation.c\
+	parse_string_arg.c \
 
 	
 

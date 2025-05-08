@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:30:32 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/30 16:51:07 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/05/08 13:45:47 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_node	*insert_data_to_stack(int argc, char **argv)
 	t_node	*top;
 
 	top = NULL;
-	i = 1;
+	i = 0;
 	while (i < argc)
 	{
 		add_node_to_stack_end(&top, ft_atoi(argv[i]));

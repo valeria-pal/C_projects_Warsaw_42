@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 11:22:12 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/30 16:42:45 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/05/08 13:56:20 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	move_max_to_top_b(t_node **b, int max)
 	pos = 0;
 	temp = *b;
 	if ((*b)->data == max)
-	return ;
+		return ;
 	while (temp && temp->data != max)
 	{
 		temp = temp->next;
@@ -95,9 +95,8 @@ void	push_swap(t_node **a)
 	t_node	*b;
 	int		size;
 	int		chunk_size;
-  
+
 	chunk_size = 20;
-	
 	b = NULL;
 	size = stack_size(*a);
 	if (size == 2)

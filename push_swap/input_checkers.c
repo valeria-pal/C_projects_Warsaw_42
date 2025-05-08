@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:08:11 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/30 16:41:07 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/05/08 13:58:51 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ static int	is_in_int_range(const char *str)
 	return (1);
 }
 
-static int	is_int(char **argv)
+static int	is_int(char **argv, int argc)
 {
 	int	i;
 
-	i = 1;
-	while (argv[i])
+	i = 0;
+	while (i < argc)
 	{
 		if (!is_valid_number(argv[i]) || !is_in_int_range(argv[i]))
 			return (0);
@@ -73,7 +73,7 @@ static int	have_duplicate(char **argv, int argc)
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (i < argc)
 	{
 		j = i + 1;
@@ -90,7 +90,7 @@ static int	have_duplicate(char **argv, int argc)
 
 int	is_input_correct(int argc, char **argv)
 {
-	if (!is_int(argv) || have_duplicate(argv, argc))
+	if (!is_int(argv, argc) || have_duplicate(argv, argc))
 	{
 		ft_printf(2, "Error\n");
 		return (0);

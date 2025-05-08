@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:58:50 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/30 16:29:39 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/05/08 13:04:13 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,8 @@ int					is_sorted(t_node *top);
 void				push_swap(t_node **a);
 
 void				index_stack(t_node *top);
+
+void				free_split(char **arr);
+char				**parse_args(int argc, char **argv, int *count);
 
 #endif

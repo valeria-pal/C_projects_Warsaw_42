@@ -1,42 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_string_arg.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 17:16:24 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/05/08 13:59:29 by vpaliash         ###   ########.fr       */
+/*   Created: 2025/05/08 13:00:53 by vpaliash          #+#    #+#             */
+/*   Updated: 2025/05/08 13:59:13 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	free_split(char **arr)
 {
-	t_node	*a;
-	char	**args;
-	int		count;
+	int	i;
 
-	a = NULL;
-	if (argc < 2)
-		return (0);
-	args = parse_args(argc, argv, &count);
-	if (!args || !is_input_correct(count, args))
-	{
-		if (argc == 2)
-			free_split(args);
-		return (1);
-	}
-	a = insert_data_to_stack(count, args);
+	i = 0;
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
+}
+
+char	**parse_args(int argc, char **argv, int *count)
+{
+	char	**args;
+	int		i;
+
 	if (argc == 2)
-		free_split(args);
-	if (is_sorted(a))
 	{
-		free_stack(&a);
-		return (0);
+		args = ft_split(argv[1], ' ');
+		if (!args || !args[0])
+			return (NULL);
+		i = 0;
+		while (args[i])
+			i++;
+		*count = i;
 	}
-	push_swap(&a);
-	free_stack(&a);
-	return (0);
+	else
+	{
+		args = argv + 1;
+		*count = argc - 1;
+	}
+	return (args);
 }
