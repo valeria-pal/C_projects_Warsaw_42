@@ -21,7 +21,7 @@ MINI_LIBX = $(MINI_LIBX_DIR)/libmlx.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
+$(NAME): $(OBJS) $(LIBFT) $(MINI_LIBX)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MINI_LIBX) $(MINI_LIBX_FLAGS) -o $(NAME)
 
 $(LIBFT):
