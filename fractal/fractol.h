@@ -6,9 +6,20 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 13:15:38 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/05/09 13:49:24 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/05/27 15:57:41 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "libft/libft.h"
 #include "minilibx/mlx.h"
+
+#ifndef FRACTOL_H
+# define FRACTOL_H
+
+# include <mlx.h>   
+# include <stdlib.h>
+
+# define WIDTH 800
+# define HEIGHT 600
+
+#endif

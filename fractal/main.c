@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 13:45:46 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/05/09 15:22:51 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/05/27 16:05:07 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ int main()
 	if(!mlx_connection_to_server)
 	return (1);
 	
-	//mlx_window = mlx_new_window
+	mlx_window = mlx_new_window(mlx_connection_to_server, WIDTH, HEIGHT, "Fractal");
+
+	if (!mlx_window)
+		return (1);
+		mlx_loop(mlx_connection_to_server);
 	mlx_destroy_display(mlx_connection_to_server);
 
 	return(0);
