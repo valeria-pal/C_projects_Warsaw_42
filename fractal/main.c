@@ -15,15 +15,15 @@
 int main()
 {
 	void *mlx_connection_to_server;
-	void *mlx_window;
+	void *mlx_window_for_mandelbrot;
 	
 	mlx_connection_to_server = mlx_init();
 	if(!mlx_connection_to_server)
 	return (1);
 	
-	mlx_window = mlx_new_window(mlx_connection_to_server, WIDTH, HEIGHT, "Fractal");
+	mlx_window_for_mandelbrot = mlx_new_window(mlx_connection_to_server, WIDTH, HEIGHT, "Fractal");
 
-	if (!mlx_window)
+	if (!mlx_window_for_mandelbrot)
 		return (1);
 		mlx_loop(mlx_connection_to_server);
 	mlx_destroy_display(mlx_connection_to_server);

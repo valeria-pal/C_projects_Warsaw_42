@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft/libft.h"
+
+#include "libft/libft.h"
 #include "minilibx/mlx.h"
 
 #ifndef FRACTOL_H
@@ -32,5 +33,8 @@ typedef struct s_complex {
 	double im;
 }	t_complex;
 
-t_complex pixel_to_complex(int x, int y)
+t_complex pixel_to_complex(int x, int y);
+int get_color(int iterations, int max_iterations);
+int	mandelbrot_iterations(int x, int y, int max_iterations);
+
 #endif
