@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 13:15:38 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/06/12 19:47:52 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/06/12 19:55:08 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,12 @@ typedef struct s_mlx_data
 
 t_complex pixel_to_complex(int x, int y);
 int get_color(int iterations, int max_iterations);
-int	mandelbrot_iterations(t_complex c, int max_iterations);
 void	draw_pixel_on_image(t_mlx_data *mlx_data, int x, int y, int color);
+
+int	mandelbrot_iterations(t_complex c, int max_iterations);
 void	draw_mandelbrot(t_mlx_data *mlx_data, int max_iterations);
+
+int	handle_key(int keycode, t_mlx_data *mlx_data);
+int	handle_close(t_mlx_data *mlx_data);
 
 #endif
