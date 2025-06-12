@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 13:15:38 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/06/03 18:14:31 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/06/12 19:47:52 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,28 @@
 #define MAX_IM 1.2
 #define MIN_IM -1.2
 
+#define MAX_ITERATIONS 1000
+
 typedef struct s_complex {
 	double re;
 	double im;
 }	t_complex;
 
+typedef struct s_mlx_data
+{
+	void	*mlx_connection;
+	void	*window;
+	void	*image;
+	char	*pixel_address;
+	int		bites_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_mlx_data;
+
 t_complex pixel_to_complex(int x, int y);
 int get_color(int iterations, int max_iterations);
-int	mandelbrot_iterations(int x, int y, int max_iterations);
+int	mandelbrot_iterations(t_complex c, int max_iterations);
+void	draw_pixel_on_image(t_mlx_data *mlx_data, int x, int y, int color);
+void	draw_mandelbrot(t_mlx_data *mlx_data, int max_iterations);
 
 #endif

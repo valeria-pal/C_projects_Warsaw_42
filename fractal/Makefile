@@ -7,9 +7,8 @@ MINI_LIBX_FLAGS = -L$(MINI_LIBX_DIR) -lmlx -lX11 -lXext -lm
 
 SRCS = \
 	main.c \
-	 pixel_utils.c 
-	 \
-	
+	 pixel_utils.c \
+	mandelbrot_utils.c \
 
 	
 
