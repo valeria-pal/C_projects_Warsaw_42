@@ -1,29 +1,40 @@
 NAME = fractal
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -I.
-MINI_LIBX_FLAGS = -L$(MINI_LIBX_DIR) -lmlx -lX11 -lXext -lm
+CFLAGS = -Wall -Wextra -Werror -g -Iminilibx
 
 
 SRCS = \
 	main.c \
-	 pixel_utils.c \
-	mandelbrot_utils.c \
-
-	
+	pixel_utils.c \
+	parsing_utils.c \
+	mandelbrot_draw.c \
+	julia_draw.c \
+	draw_fractal.c \
+	handle_functions.c \
+	zoom.c
 
 OBJS = $(SRCS:.c=.o)
 
-LIBFT_DIR = libft
+PRINTF_DIR = libftprintf
+PRINTF = $(PRINTF_DIR)/libftprintf.a
+LIBFT_DIR = $(PRINTF_DIR)/libft
 LIBFT = $(LIBFT_DIR)/libft.a
+
 
 MINI_LIBX_DIR = minilibx
 MINI_LIBX = $(MINI_LIBX_DIR)/libmlx.a
+MINI_LIBX_FLAGS = -L$(MINI_LIBX_DIR) -lmlx -lX11 -lXext -lm
+
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(MINI_LIBX)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MINI_LIBX) $(MINI_LIBX_FLAGS) -o $(NAME)
+$(NAME): $(OBJS) $(PRINTF) $(MINI_LIBX) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(PRINTF) $(LIBFT) $(MINI_LIBX) $(MINI_LIBX_FLAGS) -o $(NAME)
+
+
+$(PRINTF):
+	$(MAKE) -C $(PRINTF_DIR)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -34,16 +45,20 @@ $(MINI_LIBX):
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+
 clean:
 	rm -f $(OBJS)
+	$(MAKE) -C $(PRINTF_DIR) clean
 	$(MAKE) -C $(LIBFT_DIR) clean
 	$(MAKE) -C $(MINI_LIBX_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
+	$(MAKE) -C $(PRINTF_DIR) fclean
 	$(MAKE) -C $(LIBFT_DIR) fclean
 	$(MAKE) -C $(MINI_LIBX_DIR) clean
 
 re: fclean all
 
 .PHONY: all clean fclean re
+

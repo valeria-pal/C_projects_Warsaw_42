@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_functions.c                                 :+:      :+:    :+:   */
+/*   draw_fractal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/12 19:53:09 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/06/18 17:05:32 by vpaliash         ###   ########.fr       */
+/*   Created: 2025/06/18 15:45:41 by vpaliash          #+#    #+#             */
+/*   Updated: 2025/06/18 16:50:21 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	handle_key(int keycode, t_mlx_data *mlx_data)
+void	draw_fractal(t_fractal_data *fractal, int max_iterations)
 {
-	if (keycode == 65307)
-	{
-		mlx_destroy_window(mlx_data->mlx_connection, mlx_data->window);
-		exit(0);
-	}
-	return (0);
-}
-int	handle_close(t_mlx_data *mlx_data)
-{
-	mlx_destroy_window(mlx_data->mlx_connection, mlx_data->window);
-	exit(0);
-	return (0);
+	if (fractal->fractal_type == 0)
+		draw_mandelbrot(fractal, max_iterations);
+	else if (fractal->fractal_type == 1)
+		draw_julia(fractal, max_iterations);
 }

@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 14:14:07 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/04/30 16:10:12 by vpaliash         ###   ########.fr       */
+/*   Created: 2025/06/18 17:41:15 by vpaliash          #+#    #+#             */
+/*   Updated: 2025/06/18 17:43:31 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long	ft_atoi(const char *str)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	long	result;
-	int		sign;
-
-	sign = 1;
-	result = 0;
-	while (((*str >= 9) && (*str <= 13)) || *str == ' ')
-		str++;
-	if (*str == '-' || *str == '+')
+	while (*s1 && (*s1 == *s2))
 	{
-		if (*str == '-')
-			sign = -sign;
-		str++;
+		s1++;
+		s2++;
 	}
-	while (*str && (*str >= '0' && *str <= '9'))
-	{
-		result = result * 10 + (*str - '0');
-		str++;
-	}
-	return (result * sign);
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }

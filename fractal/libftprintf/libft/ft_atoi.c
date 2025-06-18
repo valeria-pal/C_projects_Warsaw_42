@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_functions.c                                 :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/12 19:53:09 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/06/18 17:05:32 by vpaliash         ###   ########.fr       */
+/*   Created: 2024/12/03 14:14:07 by vpaliash          #+#    #+#             */
+/*   Updated: 2024/12/16 17:21:20 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+int	ft_atoi(const char *str)
+{
+	int	result;
+	int	sign;
 
-int	handle_key(int keycode, t_mlx_data *mlx_data)
-{
-	if (keycode == 65307)
+	sign = 1;
+	result = 0;
+	while (((*str >= 9) && (*str <= 13)) || *str == ' ')
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		mlx_destroy_window(mlx_data->mlx_connection, mlx_data->window);
-		exit(0);
+		if (*str == '-')
+			sign = -sign;
+		str++;
 	}
-	return (0);
-}
-int	handle_close(t_mlx_data *mlx_data)
-{
-	mlx_destroy_window(mlx_data->mlx_connection, mlx_data->window);
-	exit(0);
-	return (0);
+	while (*str && (*str >= '0' && *str <= '9'))
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (result * sign);
 }

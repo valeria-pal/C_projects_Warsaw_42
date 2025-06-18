@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_functions.c                                 :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/12 19:53:09 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/06/18 17:05:32 by vpaliash         ###   ########.fr       */
+/*   Created: 2025/01/15 16:37:06 by vpaliash          #+#    #+#             */
+/*   Updated: 2025/02/10 14:24:43 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "ft_printf.h"
 
-int	handle_key(int keycode, t_mlx_data *mlx_data)
+int	ft_printf(const char *format, ...)
 {
-	if (keycode == 65307)
+	va_list	args;
+	int		counter;
+
+	counter = 0;
+	va_start(args, format);
+	while (*format)
 	{
-		mlx_destroy_window(mlx_data->mlx_connection, mlx_data->window);
-		exit(0);
+		if (*format == '%')
+		{
+			format++;
+			if (*format == '\0')
+				break ;
+			ft_handle_specifiers(*format, &counter, args);
+		}
+		else
+			ft_putchar(*format, &counter);
+		format++;
 	}
-	return (0);
-}
-int	handle_close(t_mlx_data *mlx_data)
-{
-	mlx_destroy_window(mlx_data->mlx_connection, mlx_data->window);
-	exit(0);
-	return (0);
+	va_end(args);
+	return (counter);
 }

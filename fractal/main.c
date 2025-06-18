@@ -6,27 +6,34 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 13:45:46 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/06/12 19:55:53 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/06/18 17:39:20 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fractol.h>
+#include "fractol.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	t_mlx_data	mlx_data;
+	t_fractal_data	data;
 
-	mlx_data.mlx_connection = mlx_init();
-	mlx_data.window = mlx_new_window(mlx_data.mlx_connection, WIDTH, HEIGHT,
-			"Mandelbrot");
-	mlx_data.image = mlx_new_image(mlx_data.mlx_connection, WIDTH, HEIGHT);
-	mlx_data.pixel_address = mlx_get_data_addr(mlx_data.image,
-			&mlx_data.bites_per_pixel, &mlx_data.line_length, &mlx_data.endian);
-	draw_mandelbrot(&mlx_data, MAX_ITERATIONS);
-	mlx_put_image_to_window(mlx_data.mlx_connection, mlx_data.window,
-		mlx_data.image, 0, 0);
-	mlx_hook(mlx_data.window, 2, 1L << 0, handle_key, &mlx_data);
-	mlx_hook(mlx_data.window, 17, 0, handle_close, &mlx_data);
-	mlx_loop(mlx_data.mlx_connection);
+	data.view.min_re = DEFAULT_MIN_RE;
+	data.view.max_re = DEFAULT_MAX_RE;
+	data.view.min_im = DEFAULT_MIN_IM;
+	data.view.max_im = DEFAULT_MAX_IM;
+	if (!parse_args(argc, argv, &data))
+		return (1);
+	data.mlx.mlx_connection = mlx_init();
+	data.mlx.window = mlx_new_window(data.mlx.mlx_connection, WIDTH, HEIGHT,
+			"Fractol");
+	data.mlx.image = mlx_new_image(data.mlx.mlx_connection, WIDTH, HEIGHT);
+	data.mlx.pixel_address = mlx_get_data_addr(data.mlx.image,
+			&data.mlx.bites_per_pixel, &data.mlx.line_length, &data.mlx.endian);
+	mlx_mouse_hook(data.mlx.window, mouse_hook, &data);
+	mlx_key_hook(data.mlx.window, handle_key, &data.mlx);
+	mlx_hook(data.mlx.window, 17, 0, handle_close, &data.mlx);
+	draw_fractal(&data, MAX_ITERATIONS);
+	mlx_put_image_to_window(data.mlx.mlx_connection, data.mlx.window,
+		data.mlx.image, 0, 0);
+	mlx_loop(data.mlx.mlx_connection);
 	return (0);
 }
