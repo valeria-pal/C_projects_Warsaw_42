@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 11:44:11 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/06/18 19:01:27 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/06/18 19:10:38 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	julia_warning_if_needed(t_complex c)
 {
 	if (c.re < -2 || c.re > 2 || c.im < -2 || c.im > 2)
 	{
-		ft_printf(" Julia parameters are outside the typical range [-2.0, 2.0]\n",
+		ft_printf(" Julia parameters are outside the typical range [-2.0, 2.0]\n Image can be meaningless " ,
 			c.re, c.im);
 	}
 }
