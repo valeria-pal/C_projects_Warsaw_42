@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 20:30:43 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/06/18 17:47:03 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/06/19 16:05:41 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int	ft_atoi(const char *str);
+int		ft_atoi(const char *str);
 double	ft_atof(const char *str);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
