@@ -6,26 +6,26 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 13:15:38 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/06/18 17:33:03 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/06/19 15:38:16 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-#include "libftprintf/ft_printf.h"
-#include "minilibx/mlx.h"
-#include <stdlib.h>
+# include "libftprintf/ft_printf.h"
+# include "minilibx/mlx.h"
+# include <stdlib.h>
 
-#define WIDTH 800
-#define HEIGHT 600
+# define WIDTH 800
+# define HEIGHT 600
 
-#define DEFAULT_MAX_RE 1.0
-#define DEFAULT_MIN_RE -2.0
-#define DEFAULT_MAX_IM 1.2
-#define DEFAULT_MIN_IM -1.2
+# define DEFAULT_MAX_RE 1.0
+# define DEFAULT_MIN_RE -2.0
+# define DEFAULT_MAX_IM 1.2
+# define DEFAULT_MIN_IM -1.2
 
-#define MAX_ITERATIONS 1000
+# define MAX_ITERATIONS 1500
 
 typedef struct s_complex
 {
@@ -69,8 +69,8 @@ void					draw_pixel_on_image(t_mlx_data *mlx_data, int x, int y,
 
 void					draw_mandelbrot(t_fractal_data *fractal,
 							int max_iterations);
-void					draw_julia(t_fractal_data *fractal, int max_iterations);
-
+void					draw_julia(t_fractal_data *fractal, t_complex c,
+							int max_iterations);
 void					draw_fractal(t_fractal_data *fractal,
 							int max_iterations);
 

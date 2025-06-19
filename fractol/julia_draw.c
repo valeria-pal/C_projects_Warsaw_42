@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:41:22 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/06/18 17:05:41 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/06/19 15:38:24 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,14 @@ static int	julia_iterations(t_complex z, t_complex c, int max_iterations)
 	return (iterations);
 }
 
-void	draw_julia(t_fractal_data *fractal, int max_iterations)
+void	draw_julia(t_fractal_data *fractal, t_complex c, int max_iterations)
 {
-	int x;
-	int y;
-	int iterations;
-	int color;
-	t_complex z;
-	t_complex c;
+	int			x;
+	int			y;
+	int			iterations;
+	int			color;
+	t_complex	z;
 
-	c = fractal->julia_param;
 	y = 0;
 	while (y < HEIGHT)
 	{

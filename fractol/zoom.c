@@ -6,7 +6,7 @@
 /*   By: vpaliash <vpaliash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 16:05:31 by vpaliash          #+#    #+#             */
-/*   Updated: 2025/06/18 17:05:59 by vpaliash         ###   ########.fr       */
+/*   Updated: 2025/06/19 15:47:36 by vpaliash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	zoom(t_fractal_data *f, int x, int y, double zoom_factor)
 	f->view.min_im = mouse_im - range_im / 2.0;
 	f->view.max_im = mouse_im + range_im / 2.0;
 }
+
 int	mouse_hook(int button, int x, int y, void *param)
 {
 	t_fractal_data	*f;
