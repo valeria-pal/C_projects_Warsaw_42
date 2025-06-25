@@ -17,6 +17,7 @@ char	*get_next_line(int fd)
 	static char	*saved_text;	
 	char		*buffer;
 	ssize_t		bytes_read;
+	char * temp;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -29,7 +30,9 @@ char	*get_next_line(int fd)
 		if (bytes_read <= 0)
 			break ;
 		buffer[bytes_read] = '\0';
-		saved_text = ft_strjoin(saved_text, buffer);
+		temp = ft_str_join(saved_text, buffer);
+		free(saved_text);
+		saved_text = temp;
 	}
 	free(buffer);
 	if (saved_text && *saved_text)
